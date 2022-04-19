@@ -2,21 +2,14 @@ const express = require('express');
 const handel = require('./handel');
 
 const app = express();
+const adminRoutes = express.Router();
 
-app.set('view engine', 'ejs');
+adminRoutes.get('')
 
-app.route('/about/event/sov')
-    .get((req, res) => {
-        res.render('pages/about');
-    })
-    .post((req, res) => {
-        res.send('Welcome to homepage with post');
-    })
-    .put((req, res) => {
-        res.send('Welcome to homepage with put');
-    })
 
-// Handel Get Req, Res
+// Handel Req, Res
+app.get('/user/:id', handel);
+
 app.listen(3000, () => {
     console.log(`Listen to 3000 Port`);
 });
